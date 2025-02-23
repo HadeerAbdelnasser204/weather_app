@@ -1,5 +1,9 @@
 //search view
+import 'dart:developer';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:weather_app/Models/weather_model.dart';
+import 'package:weather_app/Services/weather_service.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
@@ -18,8 +22,12 @@ class SearchView extends StatelessWidget {
         child: Center(
             child: TextField(
           //onChanged:(value){}, بتاخد القيمة كل شوية ما بتنتظر الانتهاء
-          onSubmitted: (value) {
-            //بتاخد القيمة بعد الانتهاء
+
+          onSubmitted: (value) async {
+            weatherModel =
+                await WeatherService(Dio()).getCurrentWeather(city: value);
+            log(weatherModel!.cityName);
+            Navigator.of(context).pop();
           },
           decoration: InputDecoration(
             labelText: 'Search',
@@ -34,3 +42,5 @@ class SearchView extends StatelessWidget {
     );
   }
 }
+
+Weather? weatherModel;
