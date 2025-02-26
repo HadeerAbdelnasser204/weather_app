@@ -37,3 +37,11 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+/*------------------bloc pattern------------------*/
+//create state
+//creat cubit
+//create function
+//provide cubit
+//interact with the cubit
+//triger the cubit
