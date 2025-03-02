@@ -36,10 +36,12 @@ class _HomePageState extends State<HomePage> {
         ),
         body: BlocBuilder<GetWeatherCubit, WeatherState>(
             builder: (context, state) {
-          if (state is InitialState) {
+          if (state is WeatherInitialState) {
             return const NoWeatherBody();
           } else if (state is WeatherLoadedState) {
-            return WeatherInfoBody(weather: weatherModel!);
+            return WeatherInfoBody(
+                weatherModel:
+                    BlocProvider.of<GetWeatherCubit>(context).weather!);
           } else {
             return const Center(child: Text('Oops! Something went wrong!'));
           }
@@ -53,4 +55,4 @@ class _HomePageState extends State<HomePage> {
 //create function
 //provide cubit
 //interact with the cubit
-//triger the cubit
+//trigger the cubit

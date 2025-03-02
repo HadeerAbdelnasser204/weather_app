@@ -1,6 +1,7 @@
 //search view
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/Models/weather_model.dart';
 import 'package:weather_app/cubits/getWeatherCubit/get_weather_cubit.dart';
 
@@ -23,7 +24,8 @@ class SearchView extends StatelessWidget {
           //onChanged:(value){}, بتاخد القيمة كل شوية ما بتنتظر الانتهاء
 
           onSubmitted: (value) async {
-            GetWeatherCubit().getWeather(cityName: value);
+            var getWeatherCubit = BlocProvider.of<GetWeatherCubit>(context);
+            getWeatherCubit.getWeather(cityName: value);
             Navigator.of(context).pop();
           },
           decoration: InputDecoration(

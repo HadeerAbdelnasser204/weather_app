@@ -7,7 +7,7 @@ class WeatherService {
   WeatherService([Dio? dio]) : dio = dio ?? Dio();
 
   String baseUrl = "http://api.weatherapi.com/v1";
-  String apiKey = "099e6cd855724a5d8f0151609251002";
+  String apiKey = "b760f2b7f0a249e5821213538250103";
   // This method will get the current weather data for a specific city.
   Future<Weather> getCurrentWeather({required String city}) async {
     try {
